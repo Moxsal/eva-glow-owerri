@@ -18,12 +18,23 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				playfair: ['Playfair Display', 'serif'],
+				inter: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'spa-primary': 'hsl(var(--spa-primary))',
+				'spa-primary-dark': 'hsl(var(--spa-primary-dark))',
+				'spa-accent': 'hsl(var(--spa-accent))',
+				'spa-accent-dark': 'hsl(var(--spa-accent-dark))',
+				'spa-neutral': 'hsl(var(--spa-neutral))',
+				'spa-text': 'hsl(var(--spa-text))',
+				'spa-text-light': 'hsl(var(--spa-text-light))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'

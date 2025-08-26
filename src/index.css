@@ -1,15 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Eva Spa & Beauty Place Design System - Luxury spa aesthetics */
 
 @layer base {
   :root {
+    /* Spa Color Palette */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 13% 18%;
+    
+    /* Spa Brand Colors */
+    --spa-primary: 350 100% 95%;        /* Soft blush pink */
+    --spa-primary-dark: 350 80% 85%;    /* Deeper blush */
+    --spa-accent: 45 100% 85%;          /* Champagne gold */
+    --spa-accent-dark: 45 90% 75%;      /* Deeper gold */
+    --spa-neutral: 20 20% 98%;          /* Warm white */
+    --spa-text: 220 15% 25%;            /* Elegant dark gray */
+    --spa-text-light: 220 10% 45%;     /* Light gray for subtitles */
+    
+    /* Gradients */
+    --gradient-spa: linear-gradient(135deg, hsl(var(--spa-primary)), hsl(var(--spa-neutral)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--spa-accent)), hsl(var(--spa-accent-dark)));
+    --gradient-elegant: linear-gradient(180deg, hsl(var(--background)), hsl(var(--spa-neutral)));
+    
+    /* Shadows & Effects */
+    --shadow-spa: 0 10px 40px -10px hsl(var(--spa-primary-dark) / 0.3);
+    --shadow-elegant: 0 20px 60px -15px hsl(var(--spa-accent) / 0.2);
+    --glow-gold: 0 0 30px hsl(var(--spa-accent) / 0.4);
+    
+    /* Animations */
+    --transition-spa: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -101,5 +124,88 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Spa Button Variants */
+  .btn-spa-primary {
+    @apply bg-gradient-to-r from-spa-primary to-spa-primary-dark text-spa-text
+           border border-spa-primary-dark hover:shadow-spa
+           px-8 py-3 rounded-full font-medium transition-all duration-300
+           hover:scale-105 hover:shadow-lg;
+  }
+  
+  .btn-spa-gold {
+    @apply bg-gradient-to-r from-spa-accent to-spa-accent-dark text-spa-text
+           border border-spa-accent-dark hover:shadow-elegant
+           px-8 py-3 rounded-full font-medium transition-all duration-300
+           hover:scale-105 hover:glow-gold;
+  }
+  
+  .btn-spa-outline {
+    @apply border-2 border-spa-primary text-spa-primary
+           hover:bg-spa-primary hover:text-spa-text
+           px-8 py-3 rounded-full font-medium transition-all duration-300
+           hover:scale-105;
+  }
+  
+  /* Spa Card Styles */
+  .card-spa {
+    @apply bg-spa-neutral border border-spa-primary/20 rounded-3xl
+           shadow-spa hover:shadow-elegant transition-all duration-500
+           hover:scale-105 backdrop-blur-sm;
+  }
+  
+  /* Spa Gradients */
+  .gradient-spa {
+    background: var(--gradient-spa);
+  }
+  
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+  
+  .gradient-elegant {
+    background: var(--gradient-elegant);
+  }
+  
+  /* Spa Text Styles */
+  .text-spa {
+    @apply text-spa-text;
+  }
+  
+  .text-spa-light {
+    @apply text-spa-text-light;
+  }
+  
+  /* Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
