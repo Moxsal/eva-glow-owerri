@@ -145,7 +145,7 @@
     @apply bg-gradient-to-r from-spa-accent to-spa-accent-dark text-spa-text
            border border-spa-accent-dark hover:shadow-elegant
            px-8 py-3 rounded-full font-medium transition-all duration-300
-           hover:scale-105 hover:glow-gold;
+           hover:scale-105 hover:shadow-glow-gold;
   }
   
   .btn-spa-outline {
