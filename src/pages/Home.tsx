@@ -1,28 +1,24 @@
 import { ArrowRight, Star, Users, Award, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import spaHero from '@/assets/spa-hero.jpg';
-import nailService from '@/assets/nail-service.jpg';
-import facialService from '@/assets/facial-service.jpg';
-import massageService from '@/assets/massage-service.jpg';
 
 const Home = () => {
   const services = [
     {
       name: 'Nail Services',
       description: 'Manicures, pedicures, acrylics & gel polish',
-      image: nailService,
+      icon: '💅',
       link: '/services#nails'
     },
     {
       name: 'Facial Treatments',
       description: 'Rejuvenating facials for glowing skin',
-      image: facialService,
+      icon: '✨',
       link: '/services#facials'
     },
     {
       name: 'Body Massage',
       description: 'Relaxing therapeutic massage therapy',
-      image: massageService,
+      icon: '💆‍♀️',
       link: '/services#massage'
     }
   ];
@@ -37,12 +33,9 @@ const Home = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${spaHero})` }}
-        >
-          <div className="absolute inset-0 bg-spa-neutral/60 backdrop-blur-[2px]"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-spa">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-spa-neutral/20"></div>
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,30 +115,23 @@ const Home = () => {
           
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="card-spa p-0 overflow-hidden group">
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-spa-text/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div key={index} className="card-spa p-6 text-center group hover:shadow-elegant transition-all duration-300">
+                <div className="w-24 h-24 gradient-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl">{service.icon}</span>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-playfair text-xl font-semibold text-spa-text mb-2">
-                    {service.name}
-                  </h3>
-                  <p className="text-spa-text-light mb-4">
-                    {service.description}
-                  </p>
-                  <Link 
-                    to={service.link}
-                    className="text-spa-accent font-medium hover:text-spa-accent-dark transition-colors inline-flex items-center"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
+                <h3 className="font-playfair text-xl font-semibold text-spa-text mb-2">
+                  {service.name}
+                </h3>
+                <p className="text-spa-text-light mb-4">
+                  {service.description}
+                </p>
+                <Link 
+                  to={service.link}
+                  className="text-spa-accent font-medium hover:text-spa-accent-dark transition-colors inline-flex items-center"
+                >
+                  Learn More
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
               </div>
             ))}
           </div>
